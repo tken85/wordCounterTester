@@ -1,5 +1,14 @@
+$(document).ready(function(){
+  readTime.init();
+});
+
 
 var readTime={
+  init: function(){
+    readTime.configWPM(230);
+    readTime.countWords(readTime.removePunctuation(readTime.getTextFromNodes(readTime.convertToArray('body'))));
+    $('.reading-time').html(readTime.calcWPM(readTime.words));
+  },
 
   configWPM: function(newWPM){
     readTime.wpm = newWPM;
